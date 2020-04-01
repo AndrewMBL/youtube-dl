@@ -75,7 +75,7 @@ class Tele5IE(InfoExtractor):
                  r'\bdata-id\s*=\s*["\']([^"\']{6,})'), webpage, 'JWplayer video id')  # NEW: get new JWplayer video id
 
         # NEW: translate the new JWplayer video id into the old nexx video id:
-        info = self._download_json('https://cdn.jwplayer.com/v2/media/%s' % video_id, self._match_id(url))
+        info = self._download_json('https://cdn.jwplayer.com/v2/media/%s' % video_id, self._match_id(url))  # when video id is in the url display id isn't initialised
         video_id = info['playlist'][0]['nexx_id']  # TODO: no idea, how to use: info.get()
         if not video_id:
             error = '%s: Cannot get nexx video id' % display_id
